@@ -1,4 +1,4 @@
-# Mucsic App Using Vue 3 bản meme
+# Mucsic App Using Vue 3 bản official
 
 Sử dụng ngôn ngữ Vue 3 đơn thuần để viết.
 
@@ -8,19 +8,22 @@ Sử dụng ngôn ngữ Vue 3 đơn thuần để viết.
 -   Chọn nhạc
 -   Chọn bài trước đó / sau đó
 -   Dừng nhạc
--   Zoom to
+-   Zoom to/ Zoom bé
 -   Chỉnh sửa âm thanh
+-   Animation lúc bấm play nhạc
 
 ## Kết quả
 
-![alt](./images/1.png)
+![alt](./images/2.png)
 
 ## Cách chạy
 
 Bước 1:
 `npm i`
+
 Bước 2:
 `npm run serve`
+
 Bước 3:
 Mở http://localhost:8080/
 

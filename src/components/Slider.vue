@@ -1,5 +1,5 @@
 <template>
-  <img class="animation" style="width:350px;height: 350px;border: 5px solid #111" v-bind:src="listImage[count]" alt="">
+  <img class="animation" style="width:350px;height: 350px;border: 5px solid #111;display: block;margin: auto" v-bind:src="listImage[count]" alt="">
   <p style="text-align: center;margin-top: 10px;font-weight: bold">{{quotes[count]}}</p>
 </template>
 

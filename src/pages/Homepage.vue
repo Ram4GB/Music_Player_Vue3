@@ -14,13 +14,21 @@
         </div>
         <div class="col-8">
           <div class="music-list">
-            <div v-for="music in listMusic" :key="music.id" @click="play(music)" class="music-list-item" :class="{isActive: currentMusic && currentMusic.id == music.id ? true :  false}">
-              <div class="col-2">
-                <span style="margin-right: 5px">{{ music.id }}</span><img src="https://i.pinimg.com/originals/4a/7f/73/4a7f73035bb4743ee57c0e351b3c8bed.jpg" alt="">
+            <div v-for="music in listMusic" :key="music.id" @click="playMusic(music)" class="music-list-item" :class="{isActive: currentMusic && currentMusic.id == music.id ? true :  false}">
+              <div class="col-2" style="display: flex;align-items: center">
+                <div style="position: relative; display: inline-block; overflow: hidden;border-radius: 50%">
+                  <div class="img" :style="{backgroundImage: 'url(' + music.image + ')'}"></div>
+                  <i class="fas fa-play-circle play-icon"></i>
+                </div>
               </div>
               <div class="col-4">
                 <div style="margin-right: 20px">
-                  <p style="font-weight: bold; color: #ac0800; text-transform: uppercase;margin-bottom: 3px">{{ music.name }}</p>
+                  <p style="font-weight: bold; color: #ac0800; text-transform: uppercase;margin-bottom: 3px
+                            ;white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;">
+                            {{ music.name }}
+                  </p>
                   <p>{{ music.author }}</p>
                 </div>
               </div>
@@ -40,7 +48,7 @@
     <div id="waveform"></div>
     <div class="music-player">
       <div class="block-1 d-flex align-items-center" style="flex:1">
-        <img v-bind:class="{active: isPlaying}" src="https://i.pinimg.com/originals/4a/7f/73/4a7f73035bb4743ee57c0e351b3c8bed.jpg" alt="">
+        <img v-bind:class="{active: isPlaying}" :src="currentMusic.image ? currentMusic.image : 'https://i.pinimg.com/originals/4a/7f/73/4a7f73035bb4743ee57c0e351b3c8bed.jpg'" alt="">
         <div>
           <p class="name">{{ currentMusic.name }}</p>
           <p class="author">{{ currentMusic.author }}</p>
@@ -89,6 +97,7 @@
       </div>
     </div>
   </div>
+  <div id="my-fly-bird" class=""></div>
   <div class="snowflakes" aria-hidden="true">
     <div class="snowflake">
     ❅
@@ -129,6 +138,9 @@ import music1 from "@/data/1.mp3";
 import music2 from "@/data/2.mp3";
 import music3 from "@/data/3.mp3";
 import music4 from "@/data/4.mp3";
+import music5 from "@/data/5.mp3";
+import music6 from "@/data/6.mp3";
+
 import { reactive, ref } from 'vue';
 import slider from '../components/Slider'
 
@@ -139,6 +151,9 @@ export default {
   data: function() {
     return {
       volume: 1,
+      animation: false,
+      cursor_left: null,
+      cursor_bottom: null
     }
   },
   computed: {
@@ -154,12 +169,30 @@ export default {
     }
   },
   mounted: function() {
-    
+    document.addEventListener('mousemove', (event) => {
+      this.cursor_left = event.pageX
+      this.cursor_bottom = event.pageY
+    })
   },
   updated: function() {
     
   },
   methods: {
+    playMusic: function(music) {
+      console.log(music)
+      console.log(this.cursor_left, this.cursor_bottom)
+      document.getElementById('my-fly-bird').style.display = "block"
+      document.getElementById('my-fly-bird').style.backgroundImage = `url("${music.image}")`
+      document.getElementById('my-fly-bird').classList.add("animation-fly")
+      document.getElementById('my-fly-bird').style.setProperty('--left', this.cursor_left + 'px');
+      document.getElementById('my-fly-bird').style.setProperty('--bottom', this.cursor_bottom + 'px');
+      document.getElementById('my-fly-bird').style.setProperty('--image', music.image);
+      setTimeout(() => {
+        document.getElementById('my-fly-bird').classList.remove("animation-fly")
+        document.getElementById('my-fly-bird').style.display = "none"
+        this.play(music)
+      }, 2000)
+    },
     handleChangeValue: function() {
       if(this.currentMusic.howl) {
         this.currentMusic.howl.volume(this.volume)
@@ -220,37 +253,44 @@ export default {
               id: 0,
               name: "If you dont call",
               author: "Sol",
-              src: music1
+              src: music1,
+              image: 'https://i1.sndcdn.com/avatars-000577547277-ire2n5-t120x120.jpg'
           },
           {
               id: 1,
               name: "I dont know the song",
               author: "Korean singer",
-              src: music2
+              src: music2,
+              image: 'https://image.shutterstock.com/image-vector/korean-flag-260nw-129071321.jpg'
           },
           {
               id: 2,
               name: "Rolling in the deep",
               author: "Adell",
-              src: music3
+              src: music3,
+              image: 'https://upload.wikimedia.org/wikipedia/vi/5/5d/Adele-Rolling_In_The_Deep.jpg'
+
           },
           {
               id: 3,
               name: "Crush",
               author: "W/n ft An An",
-              src: music4
+              src: music4,
+              image: 'https://avatar-ex-swe.nixcdn.com/song/2018/07/11/6/b/a/3/1531291715954_640.jpg'
           },
           {
               id: 4,
-              name: "Crush",
-              author: "W/n ft An An",
-              src: music4
+              name: "Masew x RedT - Mộng Mơ Official MV",
+              author: 'Masew',
+              src: music5,
+              image: 'https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/cover/7/2/3/8/7238e9f5efbfcb38f3376b906f6ff1d3.jpg'
           },
           {
               id: 5,
-              name: "Crush",
-              author: "W/n ft An An",
-              src: music4
+              name: "TÌNH BẠN DIỆU KỲ - AMEE x Ricky Star x Lăng LD ( Masew Remix )",
+              author: 'Masew',
+              src: music6,
+              image: 'https://i1.sndcdn.com/artworks-2K2HkNiHEP0Bbi2R-pPHyAQ-t500x500.jpg'
           }
     ]
     
@@ -271,6 +311,7 @@ export default {
         currentMusic.name = item.name
         currentMusic.author = item.author
         currentMusic.src = item.src
+        currentMusic.image = item.image
         currentMusic.howl =  new Howl({
           src: [item.src],
           onplay: function() {
@@ -446,6 +487,15 @@ export default {
     transition: 0.5s;
   }
 
+  .music-list-item .fa-play-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    color: #fff;
+  }
+
   .music-list-item.isActive {
     background: #5e92f3;
     border: 1px solid #003c8f;
@@ -457,11 +507,22 @@ export default {
     color: #fff;
   }
 
-  .music-list-item img {
+  .music-list-item:hover .fa-play-circle {
+    display: block;
+    color: #fff;
+  }
+
+  .music-list-item .img {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    margin-right: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: 0.5s;
+  }
+
+  .music-list-item:hover .img {
+    transform: scale(1.1);
   }
 
   .music-player {
