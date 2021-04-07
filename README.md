@@ -15,6 +15,15 @@ Sử dụng ngôn ngữ Vue 3 đơn thuần để viết.
 
 ![alt](./images/1.png)
 
+## Cách chạy
+
+Bước 1:
+`npm i`
+Bước 2:
+`npm run serve`
+Bước 3:
+Mở http://localhost:8080/
+
 Ghi chú: Đồ án môn Các công nghệ lập trình hiện đại.
 
 **Đang update branch production để ra bản official**
