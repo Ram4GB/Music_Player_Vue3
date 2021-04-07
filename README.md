@@ -1,24 +1,20 @@
-# zingmp3
+# Mucsic App Using Vue 3 bản meme
 
-## Project setup
-```
-npm install
-```
+Sử dụng ngôn ngữ Vue 3 đơn thuần để viết.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Chức năng
 
-### Compiles and minifies for production
-```
-npm run build
-```
+-   Loop nhạc
+-   Chọn nhạc
+-   Chọn bài trước đó / sau đó
+-   Dừng nhạc
+-   Zoom to
+-   Chỉnh sửa âm thanh
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Kết quả
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![alt](./images/1.png)
+
+Ghi chú: Đồ án môn Các công nghệ lập trình hiện đại.
+
+**Đang update branch production để ra bản official**

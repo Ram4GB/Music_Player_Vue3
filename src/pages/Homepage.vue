@@ -154,7 +154,7 @@ export default {
     }
   },
   mounted: function() {
-
+    
   },
   updated: function() {
     
