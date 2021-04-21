@@ -183,6 +183,9 @@ export default {
       this.cursor_bottom = event.pageY
     })
   },
+  unmounted: function() {
+    this.stop()
+  },
   updated: function() {
     
   },
@@ -431,6 +434,19 @@ export default {
       }
     }
 
+    const stop = () => {
+      clearInterval(window.interval)
+      duration.value = null
+      currentTime.value = 0
+      isPlaying.value = false
+      if(wavesurfer.value) {
+        wavesurfer.value.destroy()
+      }
+      if(currentMusic.howl) {
+        currentMusic.howl.unload()
+      }
+    }
+
     const showModal = () => {
       isShow.value = true
     }
@@ -440,7 +456,7 @@ export default {
     }
 
     return {
-      play, pause, next, previous, setLoop,
+      play, pause, next, previous, setLoop, stop,
       currentMusic, duration, currentTime,
       isPlaying,
       listMusic,

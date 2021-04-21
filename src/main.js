@@ -10,6 +10,7 @@ let routes = [
 ];
 
 const router = new createRouter({
+    mode: 'history',
     routes,
     history: createWebHistory(),
 });

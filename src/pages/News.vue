@@ -10,33 +10,37 @@ import { defineAsyncComponent } from 'vue'
 import LoadingComponent from '../components/Loading'
 
 export default {
-  components: { 
-      ListNews: defineAsyncComponent({
-          loader: () => {
-              console.log('loader new1')
-              return new Promise((resolve) => {
-                  setTimeout(() => {
-                      resolve(import('../components/ListNews'))
-                  }, 2000)
-              })
-          },
-          loadingComponent: LoadingComponent,
-      }),
-      ListNews2: defineAsyncComponent({
-          loader: () => {
-              console.log('loader new1')
-              return new Promise((resolve) => {
-                  setTimeout(() => {
-                      resolve(import('../components/ListNews2'))
-                  }, 5000)
-              })
-          },
-          loadingComponent: LoadingComponent,
-      }),
-//   ListNews: defineAsyncComponent(() => {
-//       return import('../components/ListNews')
-//   })
-  },
+    components: { 
+        ListNews: defineAsyncComponent({
+            loader: () => {
+                console.log('loader new1')
+                return new Promise((resolve) => {
+                    setTimeout(() => {
+                        resolve(import('../components/ListNews'))
+                    }, 2000)
+                })
+            },
+            loadingComponent: LoadingComponent,
+        }),
+        ListNews2: defineAsyncComponent({
+            loader: () => {
+                console.log('loader new1')
+                return new Promise((resolve) => {
+                    setTimeout(() => {
+                        resolve(import('../components/ListNews2'))
+                    }, 5000)
+                })
+            },
+            loadingComponent: LoadingComponent,
+        }),
+    //   ListNews: defineAsyncComponent(() => {
+    //       return import('../components/ListNews')
+    //   })
+    },
+    mounted: function() {
+        // in ra query
+        console.log(this.$route.query)
+    }
 }
 </script>
 

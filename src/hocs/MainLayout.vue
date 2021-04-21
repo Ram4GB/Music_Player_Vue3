@@ -11,7 +11,7 @@
                         <router-link to="/">Trang chủ</router-link>
                     </li>
                     <li class="menu-item">
-                        <router-link to="/news">News</router-link>
+                        <router-link to="/news?user=1">News</router-link>
                     </li>
                 </ul>
             </nav>
@@ -24,7 +24,20 @@
 
 <script>
 export default {
-
+    data: function() {
+        return {
+            path: ''
+        }
+    },
+    watch: {
+        '$route': function(to, from) {
+            console.log('from', from)
+            console.log('to', to)
+            if(to) {
+                this.path = to.path
+            }
+        }
+    }
 }
 </script>
 
@@ -66,7 +79,7 @@ export default {
         background-color: #003c8f;
     }
 
-    .menu-item.active a {
+    .menu-item a.router-link-active {
         background-color: #003c8f;
     }
 
