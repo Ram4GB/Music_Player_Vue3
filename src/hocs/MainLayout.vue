@@ -7,13 +7,12 @@
                 </div>
                 <p>Lê Minh Cường</p>
                 <ul class="menu">
-                    <li class="menu-item active">tổng quan</li>
-                    <li class="menu-item">bài hát</li>
-                    <li class="menu-item">playlist</li>
-                    <li class="menu-item">nghệ sĩ</li>
-                    <li class="menu-item">album</li>
-                    <li class="menu-item">mv</li>
-                    <li class="menu-item">tải lên</li>
+                    <li class="menu-item active">
+                        <router-link to="/">Trang chủ</router-link>
+                    </li>
+                    <li class="menu-item">
+                        <router-link to="/news">News</router-link>
+                    </li>
                 </ul>
             </nav>
             <div class="container-fluid p-2 wrap-container">
@@ -42,25 +41,32 @@ export default {
         display: flex;
         list-style: none;
         justify-content: space-around;
-        width: 800px;
+        width: 400px;
         margin-bottom: 0;
         padding-bottom: 0;
+        padding-left: 0;
+        margin-left: 0;
     }
 
-    .menu-item {
+    .menu-item a {
+        color: #fff;
+        text-decoration: none;
         text-transform: uppercase;
         padding: 6px 16px;
-        /* background-color: #1565c0; */
         border-radius: 25px;
         cursor: pointer;
         transition: 0.5s;
+        display: block;
+        width: 150px;
+        text-align: center;
+        border: 1px solid #fff
     }
 
-    .menu-item:hover {
+    .menu-item:hover a {
         background-color: #003c8f;
     }
 
-    .menu-item.active {
+    .menu-item.active a {
         background-color: #003c8f;
     }
 
@@ -68,7 +74,8 @@ export default {
         width: 100px;
         height: 100px;
         border-radius: 50%;
-        margin-right: 20px;
+        margin: auto;
+        display: block;
     }
 
     .wrap-container {

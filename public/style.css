@@ -24,6 +24,8 @@ body {
     box-sizing: border-box;
     min-width: 1200px;
     background-color: #fff;
+    position: relative;
+    min-height: 100vh;
 }
 
 #app:fullscreen {
@@ -90,4 +92,24 @@ body {
     background-size: cover;
     border-radius: 50%;
     background-position: center;
+}
+
+.post {
+    margin-bottom: 30px;
+}
+
+.post a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #e64a19;
+} 
+
+.post-title{
+    font-weight: bold;
+    font-size: 23px;
+}
+
+.post-description {
+    text-align: justify;
+    font-size: 18px;
 }

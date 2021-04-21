@@ -3,7 +3,7 @@
     <div class="d-flex my-4" >
       <h3 style="color: #e64a19;font-weight: bold">Danh mục bài hát</h3>
       <div style="margin-left: auto">
-        <button class="btn btn-music-normal">Tải lên</button>
+        <button v-on:click="showModal()" class="btn btn-music-normal">Bật modal thông báo</button>
         <button class="btn btn-music-primary">Phát tất cả</button>
       </div>
     </div>
@@ -130,6 +130,13 @@
     ❄
     </div>
   </div>
+  <modal v-bind:isShow="isShow" v-bind:hideModal="hideModal">
+    <template v-slot:introduceString>
+      <p>Nhóm 14 xin chào thầy và các bạn</p>
+      <div id="tag">Nhóm 5 Music</div>
+      <div class="linkMember">Xem người đóng góp</div>
+    </template>
+  </modal>
 </template>
 
 <script>
@@ -143,17 +150,19 @@ import music6 from "@/data/6.mp3";
 
 import { reactive, ref } from 'vue';
 import slider from '../components/Slider'
+import modal from '../components/Modal'
 
 export default {
   components: {
-    slider
+    slider,
+    modal
   },
   data: function() {
     return {
       volume: 1,
       animation: false,
       cursor_left: null,
-      cursor_bottom: null
+      cursor_bottom: null,
     }
   },
   computed: {
@@ -178,6 +187,9 @@ export default {
     
   },
   methods: {
+    handleClick: function() {
+      alert(123)
+    },
     playMusic: function(music) {
       console.log(music)
       console.log(this.cursor_left, this.cursor_bottom)
@@ -247,6 +259,7 @@ export default {
     let currentTime = ref(null)
     let isFullScreen = ref(null)
     let wavesurfer = ref(null)
+    let isShow = ref(false)
 
     let listMusic = [
           {
@@ -418,17 +431,13 @@ export default {
       }
     }
 
-    // const setRandom = () => {
-    //   if(!currentMusic.howl) {
-    //     alert("Mời bạn chọn bài hát")
-    //   }
+    const showModal = () => {
+      isShow.value = true
+    }
 
-    //   if(isRandom.value === true) {
-    //     isRandom.value = false
-    //   } else {
-    //     isRandom.value = true
-    //   }
-    // }
+    const hideModal = () => {
+      isShow.value = false
+    }
 
     return {
       play, pause, next, previous, setLoop,
@@ -438,7 +447,9 @@ export default {
       isRepeat,
       playId,
       isFullScreen,
-      wavesurfer
+      wavesurfer,
+      showModal, hideModal,
+      isShow
     }
 
     
