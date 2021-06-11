@@ -2,7 +2,7 @@ import { createApp } from "vue";
 import Root from "./Root.vue";
 import Homepage from "./pages/Homepage";
 import News from "./pages/News";
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 
 let routes = [
     { path: "/", component: Homepage, name: "Homepage" },
@@ -12,7 +12,7 @@ let routes = [
 const router = new createRouter({
     mode: 'history',
     routes,
-    history: createWebHistory(),
+    history: createWebHashHistory(),
 });
 
 let app = createApp(Root);
