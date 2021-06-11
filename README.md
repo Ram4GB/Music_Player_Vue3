@@ -12,6 +12,8 @@ Sử dụng ngôn ngữ Vue 3 đơn thuần để viết.
 -   Chỉnh sửa âm thanh
 -   Animation lúc bấm play nhạc
 
+## Demo Online [Link](https://ram4gb.github.io/Music_Player_Vue3/#/)
+
 ## Kết quả
 
 ![alt](./images/2.png)
